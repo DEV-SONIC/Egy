@@ -10455,7 +10455,7 @@ end
 end
 if text and text:match("^قول (.*)$") then
 if not Special(msg) then
-send(msg.chat_id_, msg.id_,'في عضو يتأمر برأسي) 
+send(msg.chat_id_, msg.id_,'في عضو يتأمر برأسي') 
 return false
 end
 local txt = {string.match(text, "^(قول) (.*)$")}
