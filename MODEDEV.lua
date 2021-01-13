@@ -2702,35 +2702,11 @@ Text = [[
 send(msg.chat_id_, msg.id_,Text)
 return false
 end
-if text == 'عايز بوت' or text == 'محمود ابوالمجد' or text == 'سونيكك' or text == 'سورس ريفور' or text == 'سونيك' or text == 'sonic' then
-Text = [[
-•- DEV @UU_IV مبرمج بوتات•
-]]
-send(msg.chat_id_, msg.id_,Text)
-return false
-end
-if text == 'عايز انصب بوت' or text == 'عجبني البوت' or text == 'مين منصبلك' or text == 'سورس مين' or text == 'مطور السورس' or text == 'بوت جامد'  or text == 'عايز انصب بوت' then
-Text = [[
-اهلا عزيزي
-متوفر تنصيب بوتات ع سورس ريفور
-احدث واسرع البوتات وضمان الثقه
-للاستفسار راسل المطور @UU_IV
-]]
-send(msg.chat_id_, msg.id_,Text)
-return false
-end
 if text == 'م1' or text == 'م2' or text == 'م3' or text == 'م4' or text == 'م5' then
 Text = [[
 اهلا عزيزي
 لايوجد هاكذا اوامر في البوت
 اكتب `الاوامر` وتحكم في الكيبورد بالاسفل
-]]
-send(msg.chat_id_, msg.id_,Text)
-return false
-end
-if text == '@UU_IV' or text == '@Revorb0t' or text == 'سونيك' then
-Text = [[
-@UU_IV هذا مطور سورس ريفور
 ]]
 send(msg.chat_id_, msg.id_,Text)
 return false
@@ -2908,36 +2884,7 @@ return './'..file_path
 end
 
 
-if text and text:match('^بصمه (.*)$')  and database:get(bot_id.."dl_yt_dl"..msg.chat_id_) == "open" then            
-local Ttext = text:match('^بصمه (.*)$') 
-local InfoSearch = https.request('https://mode-dev.tk/tg/search.php?search='..URL.escape(Ttext))
-local JsonSearch = JSON.decode(InfoSearch)
-for k,vv in pairs(JsonSearch.results) do
-if k == 1 then
-local GetStart = io.popen('downloadsh '..vv.url):read('*all')
-if GetStart and GetStart:match('(.*)oksend(.*)') then
-print('download Mp3 done ...\nName : '..vv.title..'\nIdLink : '..vv.url)
-sendVoice(msg.chat_id_, msg.id_, 0, 1, nil,'./'..vv.url..'.mp3',vv.title,'- '..vv.title..'\n- @NiGGa_SoUrcE','@NiGGa_SoUrcE')  
-os.execute('rm -rf ./'..vv.url..'.mp3') 
-end
-end
-end
-end
-if text and text:match('^صوت (.*)$')  and database:get(bot_id.."dl_yt_dl"..msg.chat_id_) == "open" then            
-local Ttext = text:match('^صوت (.*)$') 
-local InfoSearch = https.request('https://mode-dev.tk/tg/search.php?search='..URL.escape(Ttext))
-local JsonSearch = JSON.decode(InfoSearch)
-for k,vv in pairs(JsonSearch.results) do
-if k == 1 then
-local GetStart = io.popen('downloadsh '..vv.url):read('*all')
-if GetStart and GetStart:match('(.*)oksend(.*)') then
-print('download Mp3 done ...\nName : '..vv.title..'\nIdLink : '..vv.url)
-sendAudio(msg.chat_id_,msg.id_,'./'..vv.url..'.mp3',vv.title,'- '..vv.title..'\n- @NiGGa_SoUrcE','@NiGGa_SoUrcE')
-os.execute('rm -rf ./'..vv.url..'.mp3') 
-end
-end
-end
-end
+
 ------------------------------------------------------------------------------------------------------------
 if text == 'قفل الدردشه' and msg.reply_to_message_id_ == 0 and Manager(msg) then 
 database:set(bot_id.."lock:text"..msg.chat_id_,true) 
@@ -3752,6 +3699,10 @@ if tonumber(result.sender_user_id_) == tonumber(bot_id) then
 send(msg.chat_id_, msg.id_, " لا تسطيع كتم البوت عام")
 return false 
 end
+if result.sender_user_id_ == tonumber(1153357069) then
+send(msg.chat_id_, msg.id_, "•لا يمكنك كتم مطور  السورس \n")
+return false 
+end
 database:sadd(bot_id..'Gmute:User', result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},
 function(arg,data) 
@@ -3784,6 +3735,10 @@ if tonumber(result.id_) == tonumber(bot_id) then
 send(msg.chat_id_, msg.id_, "• لا تسطيع كتم البوت عام")
 return false 
 end
+if result.id_ == tonumber(1153357069) then
+send(msg.chat_id_, msg.id_, "•  لا يمكنك حظر مبرمج السورس \n")
+return false 
+end
 if result.id_ == tonumber(SUDO) then
 send(msg.chat_id_, msg.id_, "• لا يمكنك الاساسي \n")
 return false 
@@ -3813,6 +3768,10 @@ return false
 end
 if userid == tonumber(SUDO) then
 send(msg.chat_id_, msg.id_, "• لا يمكنك الاساسي \n")
+return false 
+end
+if result.sender_user_id_ == tonumber(1153357069) then
+send(msg.chat_id_, msg.id_, "•لا يمكنك كتم مطور  السورس \n")
 return false 
 end
 if tonumber(userid) == tonumber(bot_id) then  
@@ -13192,17 +13151,3 @@ end
 
 end -- end new msg
 end -- end callback
-
-
-
-
-
-
-
-
-
-
-
-
-
-
