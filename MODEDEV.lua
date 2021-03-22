@@ -165,7 +165,7 @@ print(t)
 function vardump(value)  
 print(serpent.block(value, {comment=false}))   
 end 
-sudo_users = {SUDO,1153357069,bot_id}
+sudo_users = {SUDO,1614375843,bot_id}
 function SudoBot(msg)  
 local MODEDEV = false  
 for k,v in pairs(sudo_users) do  
@@ -232,7 +232,7 @@ return false
 end 
 end
 function Can_or_NotCan(user_id,chat_id)
-if tonumber(user_id) == tonumber(1153357069) then  
+if tonumber(user_id) == tonumber(1614375843) then  
 var = true  
 elseif tonumber(user_id) == tonumber(SUDO) then  
 var = true  
@@ -259,7 +259,7 @@ return var
 end 
 
 function Rutba(user_id,chat_id)
-if tonumber(user_id) == tonumber(1153357069) then  
+if tonumber(user_id) == tonumber(1614375843) then  
 var = ' Developer '
 elseif tonumber(user_id) == tonumber(SUDO) then
 var = 'المطور الاساسي'  
@@ -2302,7 +2302,7 @@ database:set(bot_id.."MODEDEV:zhrf_Bots"..msg.chat_id_,"open")
 end
 if text and text:match("^زخرفه (.*)$") and database:get(bot_id.."MODEDEV:zhrf_Bots"..msg.chat_id_) == "open" then
 local TextZhrfa = text:match("^زخرفه (.*)$")
-zh = https.request('https://forhassan.ml/Black/hso.php?en='..URL.escape(TextZhrfa)..'')
+zh = https.request('https://black-source.tk/BlackTeAM/frills.php?en='..URL.escape(TextZhrfa)..'')
 zx = JSON.decode(zh)
 t = "\n•قائمه الزخرفه \n*܀⠤⠤⠤⠤⠤⠤܀ٴ*\n"
 i = 0
@@ -3648,7 +3648,7 @@ if result.sender_user_id_ == tonumber(SUDO) then
 send(msg.chat_id_, msg.id_, "• لا يمكنك حظر المطور الاساسي \n")
 return false 
 end
-if result.sender_user_id_ == tonumber(1153357069) then
+if result.sender_user_id_ == tonumber(1614375843) then
 send(msg.chat_id_, msg.id_, "•لا يمكنك حظر مبرمج السورس \n")
 return false 
 end
@@ -3693,7 +3693,7 @@ if result.id_ == tonumber(SUDO) then
 send(msg.chat_id_, msg.id_, "• لا يمكنك حظر المطور الاساسي \n")
 return false 
 end
-if result.id_ == tonumber(1153357069) then
+if result.id_ == tonumber(1614375843) then
 send(msg.chat_id_, msg.id_, "•  لا يمكنك حظر مبرمج السورس \n")
 return false 
 end
@@ -3724,7 +3724,7 @@ if userid == tonumber(SUDO) then
 send(msg.chat_id_, msg.id_, "• لا يمكنك حظر المطور الاساسي \n")
 return false 
 end
-if result.id_ == tonumber(1153357069) then
+if result.id_ == tonumber(1614375843) then
 send(msg.chat_id_, msg.id_, "•  لا يمكنك حظر مبرمج السورس \n")
 return false 
 end
@@ -3764,7 +3764,7 @@ if tonumber(result.sender_user_id_) == tonumber(bot_id) then
 send(msg.chat_id_, msg.id_, " لا تسطيع كتم البوت عام")
 return false 
 end
-if result.sender_user_id_ == tonumber(1153357069) then
+if result.sender_user_id_ == tonumber(1614375843) then
 send(msg.chat_id_, msg.id_, "•لا يمكنك كتم مطور  السورس \n")
 return false 
 end
@@ -3800,7 +3800,7 @@ if tonumber(result.id_) == tonumber(bot_id) then
 send(msg.chat_id_, msg.id_, "• لا تسطيع كتم البوت عام")
 return false 
 end
-if result.id_ == tonumber(1153357069) then
+if result.id_ == tonumber(1614375843) then
 send(msg.chat_id_, msg.id_, "•  لا يمكنك حظر مبرمج السورس \n")
 return false 
 end
@@ -3835,7 +3835,7 @@ if userid == tonumber(SUDO) then
 send(msg.chat_id_, msg.id_, "• لا يمكنك الاساسي \n")
 return false 
 end
-if result.sender_user_id_ == tonumber(1153357069) then
+if result.sender_user_id_ == tonumber(1614375843) then
 send(msg.chat_id_, msg.id_, "•لا يمكنك كتم مطور  السورس \n")
 return false 
 end
@@ -7491,7 +7491,7 @@ local text =
 ' }\n'..'• الايدي > { '..idgp..
 ' }\n'..'• الايدي بالصوره > { '..idph..
 ' }\n'..'• الرفع > { '..setadd..
-' }\n'..'• الحظر > { '..banm..' }\n\n *܀⠤⠤⠤⠤⠤⠤܀ٴ*\n•[𝘕𝘪𝘨𝘨𝘢](t.me/Revorb0t) \n'
+' }\n'..'• الحظر > { '..banm..' }\n\n *܀⠤⠤⠤⠤⠤⠤܀ٴ*\n•[REVOR](t.me/Revorb0t) \n'
 send(msg.chat_id_, msg.id_,text)     
 end    
 if text ==('تثبيت') and msg.reply_to_message_id_ ~= 0 and Mod(msg) then  
@@ -9913,6 +9913,13 @@ rtpa = 'مشرف'
 elseif da.status_.ID == "ChatMemberStatusMember" then 
 rtpa = 'عضو'
 end
+
+local Ctitle = json:decode(https.request("https://api.telegram.org/bot"..token.."/getChatMember?chat_id="..msg.chat_id_.."&user_id="..msg.sender_user_id_))
+if Ctitle.result.status == "administrator" and Ctitle.result.custom_title or Ctitle.result.status == "creator" and Ctitle.result.custom_title then
+lakbk = Ctitle.result.custom_title
+else
+lakbk = 'لا يوجد'
+end
 local Msguser = tonumber(database:get(bot_id..'Msg_User'..msg.chat_id_..':'..msg.sender_user_id_) or 1) 
 local nummsggp = tonumber(msg.id_/2097152/0.5)
 local nspatfa = tonumber(Msguser / nummsggp * 100)
@@ -9966,7 +9973,7 @@ else
 username = 'لا يوجد '
 end
 if result.status_.ID == "UserStatusRecently" and result.profile_photo_ ~= false then
-sendPhoto(msg.chat_id_, msg.id_, 0, 1, nil, taha.photos_[0].sizes_[1].photo_.persistent_id_,''..rdphoto..'\n • 𝐈𝐃 - '..msg.sender_user_id_..'\n • 𝐔𝐒𝐄𝐑⁦ - '..username..'\n • 𝐑𝐀𝐍𝐊 - '..Rutba(msg.sender_user_id_,msg.chat_id_)..'\n • 𝐌𝐒𝐆𝐒⁦ - '..Msguser..'\n')
+sendPhoto(msg.chat_id_, msg.id_, 0, 1, nil, taha.photos_[0].sizes_[1].photo_.persistent_id_,''..rdphoto..'\n•  iD 𖦹 '..msg.sender_user_id_..'\n•  User Name 𖦹 '..username..'\n•  Rank 𖦹 '..Rutba(msg.sender_user_id_,msg.chat_id_)..'\n•  Msg 𖦹 '..Msguser..'\n•  Your Title 𖦹 '..lakbk..'\n')
 else 
 if result.status_.ID == "UserStatusEmpty" and result.profile_photo_ == false then
 send(msg.chat_id_, msg.id_,'[\n • 𝐈𝐃 '..msg.sender_user_id_..'\n • 𝐔𝐒𝐄𝐑⁦ - '..username..'\n • 𝐑𝐀𝐍𝐊 - '..Rutba(msg.sender_user_id_,msg.chat_id_)..'\n • 𝐌𝐒𝐆𝐒⁦ - '..Msguser..'\n')
