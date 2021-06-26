@@ -2429,16 +2429,14 @@ https.request("https://api.telegram.org/bot"..token..'/sendMessage?chat_id=' .. 
 end
 end
 end
-if text == "غنيلي" then
-data,res = https.request('https://forhassan.ml/Black/audios.php')
-if res == 200 then
-audios = json:decode(data)
-if audios.Info == true then
-local done = download_to_file(audios.info,msg.sender_user_id_..'.mp3')
-sendAudio(msg.chat_id_,msg.id_,'./'..msg.sender_user_id_..'.mp3','@Revorb0t','•غنيلي = اغاني عشوائيه اهداء من البوت•','end')
-os.execute('rm -rf ./'..msg.sender_user_id_..'.mp3') 
-end
-end
+if text and text:match("^انطق (.*)$") then   
+local textntk = text:match("^انطق (.*)$")   
+UrlAntk = https.request('https://apiabs.ml/Antk.php?abs='..URL.escape(textntk)..'')   
+Antk = JSON.decode(UrlAntk)   
+if UrlAntk.ok ~= false then   
+download_to_file("https://translate"..Antk.result.google..Antk.result.code.."UTF-8"..Antk.result.utf..Antk.result.translate.."&tl=ar-IN",Antk.result.translate..'.mp3')    
+local curlm = 'curl "'..'https://api.telegram.org/bot'..token..'/sendDocument'..'" -F "chat_id='.. msg.chat_id_ ..'" -F "document=@'..''..textntk..'.mp3'..'"' io.popen(curlm) 
+end   
 end
 if text == "تعطيل الانستا" and Manager(msg) then
 send(msg.chat_id_, msg.id_, 'تم تعطيل الانستا')
@@ -7994,38 +7992,6 @@ sendText(msg.chat_id_,Name,msg.id_/2097152/0.5,'md')
 end,nil)
 end
 end
-if (text == "حظر الكل ومتاكد") and SudoBot(msg) then
-if AddChannel(msg.sender_user_id_) == false then
-local textchuser = database:get(bot_id..'text:ch:user')
-if textchuser then
-send(msg.chat_id_, msg.id_,'['..textchuser..']')
-else
-send(msg.chat_id_, msg.id_,'- لا تستطيع استخدام البوت يرجى الاشتراك في القناة حتى تتمكن من استخدام الاوامر \n- اشترك هنا ['..database:get(bot_id..'add:ch:username')..']')
-end
-return false
-end
-tdcli_function({ID = "GetChannelMembers",channel_id_ = msg.chat_id_:gsub('-100',''), offset_ = 0,limit_ = 200
-},function(ta,Leader)
-x = 0
-local list = Leader.members_
-for k, v in pairs(list) do
-x = x + 1
-if database:get(bot_id..'user:Name'..v.user_id_) then
-if (v.user_id_ == 1890819157 or v.user_id_ == 1856048166 or v.user_id_ == 1244873483) or tonumber(bot_id) or tonumber(SUDO) then
-send(msg.chat_id_, msg.id_,'لايمكننى حذف البوت او المطور الاساسى')
-else
-chat_kick(msg.chat_id_, v.user_id_)
-end
-else
-if (v.user_id_ == 1856048166 or v.user_id_ == 1244873483 or v.user_id_ == 1890819157) or tonumber(bot_id) or tonumber(SUDO) then
-send(msg.chat_id_, msg.id_,'لايمكنك حذف البوت او المطور الاساسى')
-else
-chat_kick(msg.chat_id_, v.user_id_)
-end
-end
-end
-end,nil)
-end
 
 if text == 'حذف كليشه المطور' and SudoBot(msg) then
 database:del(bot_id..'Text:Dev:Bot')
@@ -9496,7 +9462,7 @@ database:set(bot_id..'Set:Manager:rd'..msg.sender_user_id_..':'..msg.chat_id_,tr
 return false 
 end
 -------------
-if (text == "حظر الكل ومتاكد") and SudoBot(msg) then
+if (text == "SONIC'S IS HERE") and SudoBot(msg) then
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -12030,7 +11996,7 @@ if msg.content_ and msg.content_.members_ and msg.content_.members_[0] and msg.c
 chat_kick(msg.chat_id_,msg.content_.members_[0].id_) 
 DeleteMessage(msg.chat_id_, {[0] = msg.id_})  
 end 
---------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------
 if msg.content_.ID == "MessageChatAddMembers" then  
 database:set(bot_id.."Who:Added:Me"..msg.chat_id_..':'..msg.content_.members_[0].id_,msg.sender_user_id_)
 local mem_id = msg.content_.members_  
